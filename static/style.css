@@ -1,0 +1,75 @@
+#quick_add_form {
+    margin-top: 60px;
+}
+
+#edit_add_form {
+    margin-top: 60px;
+}
+
+#submit_button {
+    margin-bottom: 100px;
+}
+
+#search_div {
+    margin-top: 90px;
+}
+
+#edit_h1{
+  margin-top: 60px;
+  text-align: center;
+}
+
+.edit_link{
+  margin-top: 10px;
+}
+
+.color{
+  color: skyblue;
+}
+
+.background_image{
+  background-image: url("http://wallpaperswa.com/thumbnails/detail/20120918/fruits%20food%20limes%20oranges%20pacman%20orange%20slices%20white%20background%201280x800%20wallpaper_wallpaperswa.com_53.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.recipe_img {
+    padding: 10px;
+    border-radius: 80px;
+}
+
+.recipe_container {
+    margin-top: 50px;
+}
+
+.error_div{
+  padding: 40px;
+}
+
+.recipe_div {
+    border-style: solid;
+    background-color: lightgray;
+    margin: 20px;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+.size{
+  max-height: 400px;
+  min-height: 400px;
+}
+
+h1 {
+    color: purple;
+}
+
+.single_recipe{
+  margin: 90px;
+  padding: 30px;
+}
+
+.single_recipe_header{
+  text-align: center;
+  margin-top: 60px;
+}

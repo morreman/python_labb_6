@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Edit</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel=" stylesheet " href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+</head>
+
+<body class="background_image">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="/">Simple Recipes</a>
+          </div>
+          <div>
+              <ul class="nav navbar-nav">
+                  <li>
+                      <a href="/">Add recpie</a>
+                  </li>
+                  <li>
+                      <a href="/browse">Browse recipes</a>
+                  </li>
+                  <li>
+                      <a href="/edit">Edit recipes</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+    <div class="container">
+      <h1 id="edit_h1">Edit</h1>
+        <div class="row" id="search_div">
+            <form action="/" method="POST" name="search_form">
+                <div class="form-group col-sm-6 col-sm-offset-3">
+                    <label for="search">Search recipe to edit:</label>
+                    <input type="text" name="search_edit" value="{{ request.form.search_edit}}" class="form-control" id="search" placeholder="Pizza ...etc">
+                </div>
+                <button type="submit" value="Search" class="btn btn-success col-sm-4 col-sm-offset-4" id="search_button">Search</button>
+            </form>
+        </div>
+
+        <div class="row">
+          {% if error_msg == True %}
+            <h2>couldnt find the recipe you were looking for!</h2>
+            {% endif %}
+        </div>
+      {% if a_recipe != undefined %}
+        <div class="container" id="edit_add_form">
+            <h2 class="col-sm-offset-3 color">You are currently editing {{a_recipe.recipe_name}}</h2>
+            <form action="/update_json/{{a_recipe.recipe_name}}" method="POST" id="quick_add_form" name="edit_form">
+                <div class="form-group col-sm-6 col-sm-offset-3">
+                    <label for="recipe_name">Recipe name</label>
+                    <input type="text" name="recipe_name" class="form-control" id="recipe_name" aria-describedby="recipe_name" value="{{a_recipe.recipe_name}}">
+                    <small class="form-text text-muted">We'll share your recipe with everyone else.</small>
+                </div>
+                <div class="form-group col-sm-6 col-sm-offset-3">
+                    <label for="firstIngridient">First ingridient</label>
+                    <input type="text" name="firstIngridient" class="form-control" id="firstIngridient" value="{{a_recipe.ingridient_1}}">
+                    <small class="form-text text-muted">Something delicious!</small>
+                </div>
+                <div class="form-group col-sm-6 col-sm-offset-3">
+                    <label for="secondIngridient">Second ingridient</label>
+                    <input type="text" name="secondIngridient" class="form-control" id="secondIngridient" value="{{a_recipe.ingridient_2}}">
+                    <small class="form-text text-muted">Something even more delicious!</small>
+                </div>
+                <div class="form-group col-sm-6 col-sm-offset-3">
+                    <label for="thirdIngridient">Third ingridient</label>
+                    <input type="text" name="thirdIngridient" class="form-control" id="thirdIngridient" value="{{a_recipe.ingridient_3}}">
+                    <small class="form-text text-muted">Something unbelivably delicious!</small>
+                </div>
+                <div class="form-group col-sm-6 col-sm-offset-3">
+                    <label for="foodImage">Image ( URL )</label>
+                    <input type="url" name="img" class="form-control" id="foodImage" value="{{a_recipe.img}}">
+                    <small class="form-text text-muted">Delicious image hopefully!</small>
+                </div>
+                <div class="form-group col-sm-6 col-sm-offset-3">
+                    <label for="commentArea">Add decription for you dish! ( Optional )</label>
+                    <textarea class="form-control" name="comment" id="commentArea" rows="3">{{a_recipe.comment}}</textarea>
+                </div>
+                <button type="submit" id="submit_button" class="btn btn-primary col-sm-4 col-sm-offset-4">Submit</button>
+            </form>
+        </div>
+        {% endif %}
+
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
+
+</html>
