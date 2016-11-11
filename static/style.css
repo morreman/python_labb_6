@@ -43,10 +43,6 @@
     margin-top: 50px;
 }
 
-.error_div{
-  padding: 40px;
-}
-
 .recipe_div {
     border-style: solid;
     background-color: lightgray;
@@ -60,10 +56,6 @@
   min-height: 400px;
 }
 
-h1 {
-    color: purple;
-}
-
 .single_recipe{
   margin: 90px;
   padding: 30px;
@@ -72,4 +64,15 @@ h1 {
 .single_recipe_header{
   text-align: center;
   margin-top: 60px;
+}
+
+.error_search{
+  background-color: skyblue;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.error_div{
+  padding: 100px;
 }

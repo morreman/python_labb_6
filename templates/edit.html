@@ -13,76 +13,77 @@
 
 <body class="background_image">
 
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-          <div class="navbar-header">
-              <a class="navbar-brand" href="/">Simple Recipes</a>
-          </div>
-          <div>
-              <ul class="nav navbar-nav">
-                  <li>
-                      <a href="/">Add recpie</a>
-                  </li>
-                  <li>
-                      <a href="/browse">Browse recipes</a>
-                  </li>
-                  <li>
-                      <a href="/edit">Edit recipes</a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </nav>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Simple Recipes</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">Add recpie</a>
+                    </li>
+                    <li>
+                        <a href="/browse">Browse recipes</a>
+                    </li>
+                    <li>
+                        <a href="/edit">Edit recipes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div class="container">
-      <h1 id="edit_h1">Edit</h1>
+        <h1 id="edit_h1">Edit</h1>
         <div class="row" id="search_div">
             <form action="/" method="POST" name="search_form">
                 <div class="form-group col-sm-6 col-sm-offset-3">
                     <label for="search">Search recipe to edit:</label>
-                    <input type="text" name="search_edit" value="{{ request.form.search_edit}}" class="form-control" id="search" placeholder="Pizza ...etc">
+                    <input type="text" name="search_edit" value="{{ request.form.search_edit}}" class="form-control" id="search_edit" placeholder="Pizza ...etc">
                 </div>
                 <button type="submit" value="Search" class="btn btn-success col-sm-4 col-sm-offset-4" id="search_button">Search</button>
             </form>
         </div>
 
         <div class="row">
-          {% if error_msg == True %}
-            <h2>couldnt find the recipe you were looking for!</h2>
-            {% endif %}
+            {% if error_msg == True %}
+            <div class="error_search col-sm-8 col-sm-offset-2 text-center">
+                <h2 class="">Sorry the recipe search does not exist yet. Check the spelling and try again! required</h2> {% endif %}
+            </div>
         </div>
-      {% if a_recipe != undefined %}
+        {% if a_recipe != undefined %}
         <div class="container" id="edit_add_form">
             <h2 class="col-sm-offset-3 color">You are currently editing {{a_recipe.recipe_name}}</h2>
             <form action="/update_json/{{a_recipe.recipe_name}}" method="POST" id="quick_add_form" name="edit_form">
                 <div class="form-group col-sm-6 col-sm-offset-3">
                     <label for="recipe_name">Recipe name</label>
-                    <input type="text" name="recipe_name" class="form-control" id="recipe_name" aria-describedby="recipe_name" value="{{a_recipe.recipe_name}}">
+                    <input type="text" required name="recipe_name" class="form-control" id="recipe_name" aria-describedby="recipe_name" value="{{a_recipe.recipe_name}}">
                     <small class="form-text text-muted">We'll share your recipe with everyone else.</small>
                 </div>
                 <div class="form-group col-sm-6 col-sm-offset-3">
                     <label for="firstIngridient">First ingridient</label>
-                    <input type="text" name="firstIngridient" class="form-control" id="firstIngridient" value="{{a_recipe.ingridient_1}}">
+                    <input type="text" required name="firstIngridient" class="form-control" id="firstIngridient" value="{{a_recipe.ingridient_1}}">
                     <small class="form-text text-muted">Something delicious!</small>
                 </div>
                 <div class="form-group col-sm-6 col-sm-offset-3">
                     <label for="secondIngridient">Second ingridient</label>
-                    <input type="text" name="secondIngridient" class="form-control" id="secondIngridient" value="{{a_recipe.ingridient_2}}">
+                    <input type="text" required name="secondIngridient" class="form-control" id="secondIngridient" value="{{a_recipe.ingridient_2}}">
                     <small class="form-text text-muted">Something even more delicious!</small>
                 </div>
                 <div class="form-group col-sm-6 col-sm-offset-3">
                     <label for="thirdIngridient">Third ingridient</label>
-                    <input type="text" name="thirdIngridient" class="form-control" id="thirdIngridient" value="{{a_recipe.ingridient_3}}">
+                    <input type="text" required name="thirdIngridient" class="form-control" id="thirdIngridient" value="{{a_recipe.ingridient_3}}">
                     <small class="form-text text-muted">Something unbelivably delicious!</small>
                 </div>
                 <div class="form-group col-sm-6 col-sm-offset-3">
                     <label for="foodImage">Image ( URL )</label>
-                    <input type="url" name="img" class="form-control" id="foodImage" value="{{a_recipe.img}}">
+                    <input type="url" required name="img" class="form-control" id="foodImage" value="{{a_recipe.img}}">
                     <small class="form-text text-muted">Delicious image hopefully!</small>
                 </div>
                 <div class="form-group col-sm-6 col-sm-offset-3">
-                    <label for="commentArea">Add decription for you dish! ( Optional )</label>
-                    <textarea class="form-control" name="comment" id="commentArea" rows="3">{{a_recipe.comment}}</textarea>
+                    <label for="commentArea">Add decription for you dish!</label>
+                    <textarea class="form-control" required name="comment" id="commentArea" rows="3">{{a_recipe.comment}}</textarea>
                 </div>
                 <button type="submit" id="submit_button" class="btn btn-primary col-sm-4 col-sm-offset-4">Submit</button>
             </form>
@@ -90,6 +91,9 @@
         {% endif %}
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
 
 </html>

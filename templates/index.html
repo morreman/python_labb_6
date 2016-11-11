@@ -19,7 +19,6 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">Simple Recipes</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div>
                 <ul class="nav navbar-nav">
                     <li>
@@ -41,32 +40,32 @@
         <form action="/browse" method="POST" id="quick_add_form" name="recipe_form">
             <div class="form-group col-sm-6 col-sm-offset-3">
                 <label for="recipe_name">Recipe name</label>
-                <input type="text" name="recipe_name" class="form-control" id="recipe_name" aria-describedby="recipe_name" placeholder="Enter recipe name">
+                <input type="text" required name="recipe_name" class="form-control" id="recipe_name" aria-describedby="recipe_name" placeholder="Enter recipe name">
                 <small class="form-text text-muted">We'll share your recipe with everyone else.</small>
             </div>
             <div class="form-group col-sm-6 col-sm-offset-3">
                 <label for="firstIngridient">First ingridient</label>
-                <input type="text" name="firstIngridient" class="form-control" id="firstIngridient" placeholder="First ingridient">
+                <input type="text" required name="firstIngridient" class="form-control" id="firstIngridient" placeholder="First ingridient">
                 <small class="form-text text-muted">Something delicious!</small>
             </div>
             <div class="form-group col-sm-6 col-sm-offset-3">
                 <label for="secondIngridient">Second ingridient</label>
-                <input type="text" name="secondIngridient" class="form-control" id="secondIngridient" placeholder="First ingridient">
+                <input type="text" required name="secondIngridient" class="form-control" id="secondIngridient" placeholder="First ingridient">
                 <small class="form-text text-muted">Something even more delicious!</small>
             </div>
             <div class="form-group col-sm-6 col-sm-offset-3">
                 <label for="thirdIngridient">Third ingridient</label>
-                <input type="text" name="thirdIngridient" class="form-control" id="thirdIngridient" placeholder="First ingridient">
+                <input type="text" required name="thirdIngridient" class="form-control" id="thirdIngridient" placeholder="First ingridient">
                 <small class="form-text text-muted">Something unbelivably delicious!</small>
             </div>
             <div class="form-group col-sm-6 col-sm-offset-3">
                 <label for="foodImage">Image ( URL )</label>
-                <input type="url" name="img" class="form-control" id="foodImage" placeholder="www.myimgage.jpg.com">
+                <input type="url" required name="img" class="form-control" id="foodImage" placeholder="www.myimgage.jpg.com">
                 <small class="form-text text-muted">Delicious image hopefully!</small>
             </div>
             <div class="form-group col-sm-6 col-sm-offset-3">
-                <label for="commentArea">Add decription for you dish! ( Optional )</label>
-                <textarea class="form-control" name="comment" id="commentArea" rows="3"></textarea>
+                <label for="commentArea">Add decription for you dish!</label>
+                <textarea class="form-control" required name="comment" id="commentArea" rows="3"></textarea>
             </div>
             <button type="submit" id="submit_button" class="btn btn-primary col-sm-4 col-sm-offset-4">Submit</button>
         </form>
@@ -74,6 +73,10 @@
 
 </body>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 </html>
