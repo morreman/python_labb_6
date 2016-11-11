@@ -111,7 +111,7 @@ def recipes_all():
         return jsonify(recipes)
 
 
-# route all pages that doesnt exist here for error handling. 
+# route all pages that doesnt exist here for error handling.
 @app.errorhandler(404) #route 404 page
 def page_not_found(e):
     return render_template('404.html'), 404

@@ -46,8 +46,6 @@
 
         <div class="recipe_container">
             <h1 class="col-sm-offset-4">Here is all the recipes!</h1>
-            <!-- {%  %} <- Used for enabling python code in html like if for etc. -->
-            <!-- {{}} <- Used for show a recipe name for example. With and object passed in.  -->
             {% for recipe_row in all_recipes | batch(1, '&nbsp;') %}
             <div class="col-sm-6">
                 {% for recipe in recipe_row %}
@@ -58,7 +56,7 @@
                     <p class="col-sm-6"> <b>Second ingridient:</b> {{ recipe.ingridient_2}} </p>
                     <p class="col-sm-6"> <b>Third ingridient:</b> {{ recipe.ingridient_3}} </p>
                     <p class="col-sm-6"> <b>Commiters comment:</b> {{ recipe.comment}} </p>
-                    <a value="{{ recipe['recipe_name'] }}" href="{{ url_for('edit') }}"><button type="browse" id="browse_button" class="btn btn-info col-sm-4 col-sm-offset-4">Edit</button></a>
+                    <a href="{{ url_for('edit') }}"><button value="{{ recipe['recipe_name'] }}" type="submit" id="browse_button" class="btn btn-info col-sm-4 col-sm-offset-4">Edit</button></a>
                 </div>
                 {% endfor %}
             </div>
