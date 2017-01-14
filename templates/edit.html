@@ -21,10 +21,10 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/">Add recpie</a>
+                        <a href="/add">Add recpie</a>
                     </li>
                     <li>
-                        <a href="/browse">Browse recipes</a>
+                        <a href="/recipes">Recipes</a>
                     </li>
                     <li>
                         <a href="/edit">Edit recipes</a>
@@ -37,7 +37,7 @@
     <div class="container">
         <h1 id="edit_h1">Edit</h1>
         <div class="row" id="search_div">
-            <form action="/" method="POST" name="search_form">
+            <form action="/add" method="POST" name="search_form">
                 <div class="form-group col-sm-6 col-sm-offset-3">
                     <label for="search">Search recipe to edit:</label>
                     <input type="text" name="search_edit" value="{{ request.form.search_edit}}" class="form-control" id="search_edit" placeholder="Pizza ...etc">
@@ -89,7 +89,6 @@
             </form>
         </div>
         {% endif %}
-
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 

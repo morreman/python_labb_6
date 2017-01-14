@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, json, jsonify
 
 app = Flask(__name__)
-
+###########################################################################
+#Kompletterad, Har lagt till en add sida och flyttat ut form till egen sida. 
 # @ signifies a decorator - way to modifiy
-@app.route('/', methods =['GET', 'POST']) #route homepage
-def index():
+@app.route('/add', methods =['GET', 'POST']) #route homepage
+def add():
     if request.method == 'POST':
         with open('database.json') as json_file:
             data = json.load(json_file)
@@ -17,20 +18,26 @@ def index():
                 error_msg = True
                 return render_template("edit.html", error_msg= error_msg)
     else:
-        return render_template("index.html")
+        return render_template("add.html")
+
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
 
 
 # using post method to post information from the form.
 # using get method to display all recipes.
-@app.route('/browse', methods=['POST', 'GET'])
-def browse():
+@app.route('/recipes', methods=['POST', 'GET'])
+def recipes():
     if request.method == 'GET':
         with open('database.json') as json_file:
             recipes = json.load(json_file)
             all_recipes = recipes['recipes']
             nbr_of_recipes = len(all_recipes)
             for recipe_searched in all_recipes:
-                return render_template("browse.html", all_recipes = all_recipes, nbr_of_recipes = nbr_of_recipes)
+                return render_template("recipes.html", all_recipes = all_recipes, nbr_of_recipes = nbr_of_recipes)
 
     if request.method == 'POST':
         recipe_name = request.form['recipe_name'].lower()
@@ -40,8 +47,37 @@ def browse():
         img = request.form['img']
         comment = request.form['comment']
         add_recipe(recipe_name, ingridient_1,ingridient_2,ingridient_3,img,comment) # send all of the info to add_user method.
-        return render_template("index.html")
+        return render_template("add.html")
 
+###########################################################################
+#Kompletterad
+# This route is for showing a recipe
+@app.route('/recipes/<string:recipe_name>', methods=['GET', 'POST'])
+def a_recipe(recipe_name):
+    if request.method == 'GET':
+        with open('database.json') as json_file:
+            data = json.load(json_file)
+            recipes = data["recipes"]
+            for a_recipe in recipes:
+                if a_recipe["recipe_name"] == recipe_name:
+                    return render_template("recipe.html", a_recipe = a_recipe)
+
+###########################################################################
+
+
+###############################################################################
+#Kompletterad*
+#Edit route from edit button in recipes.html
+@app.route('/recipes/<string:recipe_name>/edit', methods = ['GET', 'POST'])
+def editon_Btn(recipe_name):
+    with open('database.json') as json_file:
+        data = json.load(json_file)
+        recipes = data["recipes"]
+        for a_recipe in recipes:
+            if a_recipe["recipe_name"] == recipe_name:
+                return render_template("edit.html", a_recipe = a_recipe)
+
+###############################################################################
 
 
 #Appends a new recipe to the json database.
@@ -94,7 +130,7 @@ def update_json(recipe_id):
 
 
 #Api route to see a json recipe in webbrowser.
-@app.route('/api/browse/<recipe>') #route a user
+@app.route('/api/recipes/<recipe>') #route a user
 def user(recipe):
     with open('database.json') as json_file:
         data = json.load(json_file)

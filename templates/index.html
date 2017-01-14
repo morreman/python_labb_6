@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Home</title>
 
-    <link rel="stylesheet" href= "{{ url_for('static',filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Optional theme -->
@@ -22,10 +22,10 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/">Add recpie</a>
+                        <a href="/add">Add recpie</a>
                     </li>
                     <li>
-                        <a href="/browse">Browse recipes</a>
+                        <a href="/recipes">Recipes</a>
                     </li>
                     <li>
                         <a href="/edit">Edit recipes</a>
@@ -35,40 +35,15 @@
         </div>
     </nav>
 
-    <div class="container" id="quick_add_form">
-        <h2 class="col-sm-offset-4">3 Item recipes for faster food!</h2>
-        <form action="/browse" method="POST" id="quick_add_form" name="recipe_form">
-            <div class="form-group col-sm-6 col-sm-offset-3">
-                <label for="recipe_name">Recipe name</label>
-                <input type="text" required name="recipe_name" class="form-control" id="recipe_name" aria-describedby="recipe_name" placeholder="Enter recipe name">
-                <small class="form-text text-muted">We'll share your recipe with everyone else.</small>
-            </div>
-            <div class="form-group col-sm-6 col-sm-offset-3">
-                <label for="firstIngridient">First ingridient</label>
-                <input type="text" required name="firstIngridient" class="form-control" id="firstIngridient" placeholder="First ingridient">
-                <small class="form-text text-muted">Something delicious!</small>
-            </div>
-            <div class="form-group col-sm-6 col-sm-offset-3">
-                <label for="secondIngridient">Second ingridient</label>
-                <input type="text" required name="secondIngridient" class="form-control" id="secondIngridient" placeholder="First ingridient">
-                <small class="form-text text-muted">Something even more delicious!</small>
-            </div>
-            <div class="form-group col-sm-6 col-sm-offset-3">
-                <label for="thirdIngridient">Third ingridient</label>
-                <input type="text" required name="thirdIngridient" class="form-control" id="thirdIngridient" placeholder="First ingridient">
-                <small class="form-text text-muted">Something unbelivably delicious!</small>
-            </div>
-            <div class="form-group col-sm-6 col-sm-offset-3">
-                <label for="foodImage">Image ( URL )</label>
-                <input type="url" required name="img" class="form-control" id="foodImage" placeholder="www.myimgage.jpg.com">
-                <small class="form-text text-muted">Delicious image hopefully!</small>
-            </div>
-            <div class="form-group col-sm-6 col-sm-offset-3">
-                <label for="commentArea">Add decription for you dish!</label>
-                <textarea class="form-control" required name="comment" id="commentArea" rows="3"></textarea>
-            </div>
-            <button type="submit" id="submit_button" class="btn btn-primary col-sm-4 col-sm-offset-4">Submit</button>
-        </form>
+    <div class="wrapper_index col-sm-8">
+        <br> <br> <br>
+        <h1>Välkommen till recept sidan!</h1>
+        <p>Navigera enkelt via navigationslistan</p>
+        <ul>
+            <li>Add = Lägg till recept</li>
+            <li>Recipes = Se alla recept</li>
+            <li>Edit = redigera recept</li>
+        </ul>
     </div>
 
 </body>

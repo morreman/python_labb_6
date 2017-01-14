@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Browse</title>
+    <title>Recipes</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,10 +20,10 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/">Add recpie</a>
+                        <a href="/add">Add recpie</a>
                     </li>
                     <li>
-                        <a href="/browse">Browse recipes</a>
+                        <a href="/recipes">Recipes</a>
                     </li>
                     <li>
                         <a href="/edit">Edit recipes</a>
@@ -45,23 +45,23 @@
         </div>
 
         <div class="recipe_container">
-            <h1 class="col-sm-offset-4">Here is all the recipes!</h1>
-            {% for recipe_row in all_recipes | batch(1, '&nbsp;') %}
+            <h1 class="col-sm-offset-4">Here is all the recipes!</h1> {% for recipe_row in all_recipes | batch(1, '&nbsp;') %}
             <div class="col-sm-6">
                 {% for recipe in recipe_row %}
-                <div class="recipe_div">
+                <div class="recipe_div" id='{{ recipe[' recipe_name '] }}'>
                     <h2 class="col-sm-6"> {{ recipe['recipe_name'] }} </h2>
                     <img class="recipe_img col-sm-6 pull-right" src="{{recipe.img}}" alt="No imgage added" width="200" height="200">
                     <p class="col-sm-6"> <b>First ingridient:</b> {{ recipe.ingridient_1}} </p>
                     <p class="col-sm-6"> <b>Second ingridient:</b> {{ recipe.ingridient_2}} </p>
                     <p class="col-sm-6"> <b>Third ingridient:</b> {{ recipe.ingridient_3}} </p>
                     <p class="col-sm-6"> <b>Commiters comment:</b> {{ recipe.comment}} </p>
-                    <a href="{{ url_for('edit') }}"><button value="{{ recipe['recipe_name'] }}" type="submit" id="browse_button" class="btn btn-info col-sm-4 col-sm-offset-4">Edit</button></a>
+                    <form action="/recipes/{{recipe.recipe_name}}/edit" method="POST">
+                        <a href="{{ url_for('edit') }}"><button value="{{ recipe['recipe_name'] }}" type="submit" id="browse_button" class="btn btn-info col-sm-4 col-sm-offset-4">Edit</button></a>
+                    </form>
                 </div>
                 {% endfor %}
             </div>
             {% endfor %}
-
         </div>
     </div>
     </div>
